@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_chat/screens/login_screen.dart';
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter_chat/screens/registration_screen.dart';
 
 class WelcomeScreen extends StatefulWidget {
@@ -16,14 +17,10 @@ class _WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProvider
     // TODO: implement initState
     super.initState();
     animationController = AnimationController(duration: Duration(seconds: 1) , vsync: this,);
-    animation = CurvedAnimation(parent: animationController,curve: Curves.decelerate);
+    // animation = CurvedAnimation(parent: animationController,curve: Curves.decelerate);
+animation = ColorTween(begin: Colors.blueGrey,end: Colors.white).animate(animationController);
+    animationController.forward();
 
-    animationController.reverse(from: 1);
-    animation.addStatusListener((status) {
-     if(status == AnimationStatus.dismissed){
-       animationController.forward();
-     }
-    });
     animationController.addListener(() {
       setState(() {
 
@@ -42,7 +39,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProvider
 
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: animation.value,
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 24.0),
         child: Column(
@@ -55,16 +52,19 @@ class _WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProvider
                   tag: 'logo',
                   child: Container(
                     child: Image.asset('images/logo.png'),
-                    height: animation.value * 100,
+                    height: 60.0,
                   ),
                 ),
-                Text(
-                  'Flash Chat',
-                  style: TextStyle(
+                TypewriterAnimatedTextKit(
+                 text : ['Flash Chat'],
+                  textStyle: TextStyle(
                     color: Colors.black,
                     fontSize: 45.0,
                     fontWeight: FontWeight.w900,
                   ),
+                  speed: const Duration(microseconds: 100000),
+                  repeatForever: false,
+                  totalRepeatCount: 1,
                 ),
               ],
             ),
