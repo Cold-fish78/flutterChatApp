@@ -18,14 +18,25 @@ class _WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProvider
     animationController = AnimationController(duration: Duration(seconds: 1) , vsync: this,);
     animation = CurvedAnimation(parent: animationController,curve: Curves.decelerate);
 
-    animationController.forward();
+    animationController.reverse(from: 1);
+    animation.addStatusListener((status) {
+     if(status == AnimationStatus.dismissed){
+       animationController.forward();
+     }
+    });
     animationController.addListener(() {
       setState(() {
 
       });
-      print(animation.value);
+
     });
 
+  }
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    animationController.dispose();
   }
   @override
 
