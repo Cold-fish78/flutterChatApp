@@ -30,6 +30,9 @@ dependencies:
   flutter:
     sdk: flutter
   animated_text_kit: ^4.2.1
+  firebase_core: ^1.13.1
+  cloud_firestore: ^3.1.10
+  firebase_auth: ^3.3.10
 
 
   # The following adds the Cupertino Icons font to your application.

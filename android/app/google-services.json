@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "781763747878",
+    "project_id": "flash-chat-eda3e",
+    "storage_bucket": "flash-chat-eda3e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:781763747878:android:cdb90aebe3a0c12e0786e7",
+        "android_client_info": {
+          "package_name": "com.nik2.flutter_chat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "781763747878-2mlqbtcp330ntgei6d375g5352h7o7c6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyATPq_EUKnohDE5OHsNZJWFmmy6FWdT16M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "781763747878-2mlqbtcp330ntgei6d375g5352h7o7c6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
