@@ -15,7 +15,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProvider
   void initState() {
     // TODO: implement initState
     super.initState();
-    animationController = AnimationController(duration: Duration(seconds: 3) , vsync: this,upperBound: 100);
+    animationController = AnimationController(duration: Duration(seconds: 1) , vsync: this,);
     animation = CurvedAnimation(parent: animationController,curve: Curves.decelerate);
 
     animationController.forward();
@@ -44,7 +44,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProvider
                   tag: 'logo',
                   child: Container(
                     child: Image.asset('images/logo.png'),
-                    height: 60.0,
+                    height: animation.value * 100,
                   ),
                 ),
                 Text(
