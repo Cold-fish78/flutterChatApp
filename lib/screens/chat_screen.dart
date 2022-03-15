@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_chat/constants.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class ChatScreen extends StatefulWidget {
   static const String id ='chat_screen';
@@ -8,6 +9,27 @@ class ChatScreen extends StatefulWidget {
 }
 
 class _ChatScreenState extends State<ChatScreen> {
+  final _auth = FirebaseAuth.instance;
+  dynamic loggedInUser;
+
+  @override
+  void initState() {
+    getCurrentUser();
+    // TODO: implement initState
+    super.initState();
+  }
+  void getCurrentUser() async{
+    try{
+      final user = await _auth.currentUser;
+      print(user);
+      if(user != null){
+        loggedInUser = user;
+        print(loggedInUser.email);
+      }
+    } catch(e){
+      print(e);
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,7 +65,8 @@ class _ChatScreenState extends State<ChatScreen> {
                   ),
                   FlatButton(
                     onPressed: () {
-                      //Implement send functionality.
+
+                      //Implempent send functionality.
                     },
                     child: Text(
                       'Send',
