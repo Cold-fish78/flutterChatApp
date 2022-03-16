@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
 import 'chat_screen.dart';
+
 class RegistrationScreen extends StatefulWidget {
   static const String id = 'registration_screen';
   @override
@@ -28,11 +29,13 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              Hero(
-                tag: 'logo',
-                child: Container(
-                  height: 200.0,
-                  child: Image.asset('images/logo.png'),
+              Flexible(
+                child: Hero(
+                  tag: 'logo',
+                  child: Container(
+                    height: 200.0,
+                    child: Image.asset('images/logo.png'),
+                  ),
                 ),
               ),
               SizedBox(
@@ -58,29 +61,32 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   //Do something with the user input.
                 },
                 decoration: kInputTextDecorationEmail.copyWith(
-                  hintText: 'Enter your password'
-                ),
+                    hintText: 'Enter your password'),
               ),
               const SizedBox(
                 height: 24.0,
               ),
-          RoundedWidget(color: Colors.blueAccent, onPressed: () async {
-            setState(() {
-              showSpinner = true;
-            });
-           try{
-             final newUser =await _Auth.createUserWithEmailAndPassword(email: email, password: password);
-           if(newUser != null){
-             Navigator.pushNamed(context, ChatScreen.id);
-           }
-           setState(() {
-             showSpinner = false;
-           });
-           } catch(e){
-             print(e);
-           }
-
-          }, title: 'Register'),
+              RoundedWidget(
+                  color: Colors.blueAccent,
+                  onPressed: () async {
+                    setState(() {
+                      showSpinner = true;
+                    });
+                    try {
+                      final newUser =
+                          await _Auth.createUserWithEmailAndPassword(
+                              email: email, password: password);
+                      if (newUser != null) {
+                        Navigator.pushNamed(context, ChatScreen.id);
+                      }
+                      setState(() {
+                        showSpinner = false;
+                      });
+                    } catch (e) {
+                      print(e);
+                    }
+                  },
+                  title: 'Register'),
             ],
           ),
         ),
